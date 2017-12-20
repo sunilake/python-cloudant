@@ -257,7 +257,7 @@ class Document(dict):
             self.save()
         except requests.HTTPError as ex:
             if tries < max_tries and ex.response.status_code == 409:
-                return self._update_field(
+                self._update_field(
                     action, field, value, max_tries, tries=tries+1)
             raise
 
